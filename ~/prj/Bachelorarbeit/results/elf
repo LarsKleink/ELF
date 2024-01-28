@@ -1,0 +1,2 @@
+FileName	CompressorName	CompressorRatio	CompressionTime	MaxCompressTime	MinCompressTime	MediaCompressTime	DecompressionTime	MaxDecompressTime	MinDecompressTime	MediaDecompressTime	
+../..//Datasets/t502861995_c0/t502861995_c0.csv	ElfCompressor	0.4857579326923077	258.05440000000004	3642.719	103.727	167.728	147.91683076923073	1229.285	56.237	112.864	
