@@ -54,7 +54,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //String compressor = args[0];
         //String filepath = args[1];
-        String compressor = "elf";
+        String compressor = "elf"; //Test
         String filepath = "../..//Datasets/RANDOM/RANDOM.csv";
         compressor = compressor.toLowerCase();
         Map<String, List<ResultStructure>> result = new HashMap<>();
