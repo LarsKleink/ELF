@@ -47,15 +47,15 @@ public class Main {
                 "/Stocks-USA.csv",
                 "/Wind-Speed.csv",
         };*/
-    private static final String STORE_RESULT = "../../results";
+    private static final String STORE_RESULT = "/home/lars/prj/Bachelorarbeit/results/";
     private static final double TIME_PRECISION = 1000.0;
     static List<Map<String, ResultStructure>> allResult = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        //String compressor = args[0];
-        //String filepath = args[1];
-        String compressor = "elf"; //Test
-        String filepath = "../..//Datasets/RANDOM/RANDOM.csv";
+        String compressor = args[0];
+        String filepath = args[1];
+        //String compressor = "elf"; //Test
+        //String filepath = "../..//Datasets/RANDOM/RANDOM.csv";
         compressor = compressor.toLowerCase();
         Map<String, List<ResultStructure>> result = new HashMap<>();
         testCompressor(filepath, compressor, result);
@@ -146,7 +146,7 @@ public class Main {
                 default:
                     throw new IllegalStateException("Unexpected value: " + compressor);
             }
-
+/*
             IDecompressor[] decompressors = new IDecompressor[]{
                     new GorillaDecompressorOS(result),
                     new ElfOnGorillaDecompressorOS(result),
@@ -156,7 +156,7 @@ public class Main {
                     new ElfOnChimpNDecompressor(result, 128),
                     new ElfDecompressor(result)
             };
-
+*/
             start = System.nanoTime();
             List<Double> uncompressedValues = decompressorToUse.decompress();
             decodingDuration = System.nanoTime() - start;
@@ -195,13 +195,14 @@ public class Main {
     }
 
     private static void storeResult(String location) throws IOException {
-        String filePath = STORE_RESULT + "/" + location + "/result.csv";
+        String filePath = STORE_RESULT + location + ".csv";
+        System.out.println(filePath);
         File file = new File(filePath).getParentFile();
         if (!file.exists() && !file.mkdirs()) {
             throw new IOException("Create directory failed: " + file);
         }
         try (FileWriter fileWriter = new FileWriter(filePath)) {
-            fileWriter.write(ResultStructure.getHead());
+            fileWriter.write(ResultStructure.getHeadMain());
             for (Map<String, ResultStructure> result : allResult) {
                 for (ResultStructure ls : result.values()) {
                     fileWriter.write(ls.toString());

@@ -149,21 +149,25 @@ public class ResultStructure {
                 "MediaDecompressTime\t" +
                 '\n';
     }
+
+    public static String getHeadMain() {
+        return "FileName\t" +
+                "CompressorName\t" +
+                "CompressorRatio\t" +
+                "CompressionTime\t" +
+                "DecompressionTime\t" +
+                '\n';
+    }
     @Override
     public String toString() {
         return filename + '\t' +
                 compressorName + '\t' +
                 compressorRatio + '\t' +
                 compressionTime + '\t' +
-                maxCompressTime + '\t' +
-                minCompressTime + '\t' +
-                mediaCompressTime + '\t' +
                 decompressionTime + '\t' +
-                maxDecompressTime + '\t' +
-                minDecompressTime + '\t' +
-                mediaDecompressTime + '\t' +
                 '\n';
     }
+
 
     public double medianValue(List<Double> ld) {
         int num = ld.size();
