@@ -160,12 +160,9 @@ public class ResultStructure {
     }
     @Override
     public String toString() {
-        return filename + '\t' +
-                compressorName + '\t' +
-                compressorRatio + '\t' +
-                compressionTime + '\t' +
-                decompressionTime + '\t' +
-                '\n';
+        return String.valueOf(compressorRatio) + ',' +
+                (int)Math.round(compressionTime) + "," +
+                (int)Math.round(decompressionTime);
     }
 
 
