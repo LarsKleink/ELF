@@ -37,11 +37,17 @@ public class ResultStructure {
         this.filename = filename;
         this.compressorName = compressorName;
         this.compressorRatio = compressorRatio;
-        this.compressionTime = avgValue(compressionTime);
+        this.compressionTime = 0;
+        for (int i = 0; i < compressionTime.size(); i++) {
+            this.compressionTime += compressionTime.get(i);
+        }
         this.maxCompressTime = maxValue(compressionTime);
         this.minCompressTime = minValue(compressionTime);
         this.mediaCompressTime = medianValue(compressionTime);
-        this.decompressionTime = avgValue(decompressionTime);
+        this.decompressionTime = 0;
+        for (int i = 0; i < decompressionTime.size(); i++) {
+            this.decompressionTime += decompressionTime.get(i);
+        }
         this.maxDecompressTime = maxValue(decompressionTime);
         this.minDecompressTime = minValue(decompressionTime);
         this.mediaDecompressTime = medianValue(decompressionTime);
