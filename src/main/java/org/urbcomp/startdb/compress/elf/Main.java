@@ -11,10 +11,7 @@ import org.apache.hadoop.hbase.io.compress.zstd.ZstdCodec;
 import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.io.compress.CompressionInputStream;
 import org.apache.hadoop.io.compress.CompressionOutputStream;
-import org.urbcomp.startdb.compress.elf.compressor.ChimpCompressor;
-import org.urbcomp.startdb.compress.elf.compressor.ElfCompressor;
-import org.urbcomp.startdb.compress.elf.compressor.GorillaCompressorOS;
-import org.urbcomp.startdb.compress.elf.compressor.ICompressor;
+import org.urbcomp.startdb.compress.elf.compressor.*;
 import org.urbcomp.startdb.compress.elf.decompressor.ChimpDecompressor;
 import org.urbcomp.startdb.compress.elf.decompressor.ElfDecompressor;
 import org.urbcomp.startdb.compress.elf.decompressor.GorillaDecompressorOS;
@@ -29,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-    private static final String STORE_RESULT = "/home/lars/prj/Bachelorarbeit/results/";
+    private static final String STORE_RESULT = "/home/lars/prj/Bachelorarbeit/results/algorithms/";
     private static final double TIME_PRECISION = 1000.0;
     static List<Map<String, ResultStructure>> allResult = new ArrayList<>();
 
@@ -56,6 +53,7 @@ public class Main {
                 break;
             case "elf":
             case "chimp":
+            case "chimp128":
             case "gorilla":
                 testCompressor(filepath, compressor, result);
                 break;
@@ -104,6 +102,9 @@ public class Main {
                     break;
                 case "chimp":
                     compressorToUse = new ChimpCompressor();
+                    break;
+                case "chimp128":
+                    compressorToUse = new ChimpNCompressor(128);
                     break;
                 case "gorilla":
                     compressorToUse = new GorillaCompressorOS();

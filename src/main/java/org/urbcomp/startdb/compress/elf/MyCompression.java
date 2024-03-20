@@ -1,5 +1,17 @@
 package org.urbcomp.startdb.compress.elf;
 
+import com.github.kutschkem.fpc.FpcCompressor;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.CommonConfigurationKeys;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.io.compress.brotli.BrotliCodec;
+import org.apache.hadoop.hbase.io.compress.lz4.Lz4Codec;
+import org.apache.hadoop.hbase.io.compress.xerial.SnappyCodec;
+import org.apache.hadoop.hbase.io.compress.xz.LzmaCodec;
+import org.apache.hadoop.hbase.io.compress.zstd.ZstdCodec;
+import org.apache.hadoop.io.IOUtils;
+import org.apache.hadoop.io.compress.CompressionInputStream;
+import org.apache.hadoop.io.compress.CompressionOutputStream;
 import org.urbcomp.startdb.compress.elf.compressor.*;
 import org.urbcomp.startdb.compress.elf.decompressor.*;
 
